@@ -1,8 +1,7 @@
 module github.com/whosonfirst/go-writer-elasticsearch
 
+					     go 1.12
 require (
 	github.com/elastic/go-elasticsearch v0.0.0
-	github.com/whosonfirst/go-writer v0.0.2
+      github.com/whosonfirst/go-writer v0.1.0
 )
-
-go 1.12

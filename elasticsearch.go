@@ -18,8 +18,25 @@ type ElasticsearchWriter struct {
 }
 
 func init() {
+
+	ctx := context.Background()
+	err := wof_writer.RegisterWriter(ctx, "elasticsearch", initializeElasticsearchWriter)
+
+	if err != nil {
+		panic(err)
+	}
+}
+
+func initializeElasticsearchWriter(ctx context.Context, uri string) (wof_writer.Writer, error) {
+
 	wr := NewElasticsearchWriter()
-	wof_writer.Register("elasticsearch", wr)
+	err := wr.Open(ctx, uri)
+
+	if err != nil {
+		return nil, err
+	}
+
+	return wr, nil
 }
 
 func NewElasticsearchWriter() wof_writer.Writer {

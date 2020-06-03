@@ -1,8 +1,10 @@
+# github.com/aaronland/go-roster v0.0.1
+github.com/aaronland/go-roster
 # github.com/elastic/go-elasticsearch v0.0.0
 github.com/elastic/go-elasticsearch
 github.com/elastic/go-elasticsearch/esapi
 github.com/elastic/go-elasticsearch/estransport
 # github.com/natefinch/atomic v0.0.0-20150920032501-a62ce929ffcc
 github.com/natefinch/atomic
-# github.com/whosonfirst/go-writer v0.0.2
+# github.com/whosonfirst/go-writer v0.2.0
 github.com/whosonfirst/go-writer

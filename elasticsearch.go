@@ -20,37 +20,19 @@ type ElasticsearchWriter struct {
 func init() {
 
 	ctx := context.Background()
-	err := wof_writer.RegisterWriter(ctx, "elasticsearch", initializeElasticsearchWriter)
+	err := wof_writer.RegisterWriter(ctx, "elasticsearch", NewElasticsearchWriter)
 
 	if err != nil {
 		panic(err)
 	}
 }
 
-func initializeElasticsearchWriter(ctx context.Context, uri string) (wof_writer.Writer, error) {
-
-	wr := NewElasticsearchWriter()
-	err := wr.Open(ctx, uri)
-
-	if err != nil {
-		return nil, err
-	}
-
-	return wr, nil
-}
-
-func NewElasticsearchWriter() wof_writer.Writer {
-
-	wr := ElasticsearchWriter{}
-	return &wr
-}
-
-func (wr *ElasticsearchWriter) Open(ctx context.Context, uri string) error {
+func NewElasticsearchWriter(ctx context.Context, uri string) (wof_writer.Writer, error) {
 
 	u, err := url.Parse(uri)
 
 	if err != nil {
-		return err
+		return nil, err
 	}
 
 	host := u.Host
@@ -67,7 +49,7 @@ func (wr *ElasticsearchWriter) Open(ctx context.Context, uri string) error {
 		p, err := strconv.Atoi(str_port)
 
 		if err != nil {
-			return err
+			return nil, err
 		}
 
 		port = p
@@ -89,13 +71,15 @@ func (wr *ElasticsearchWriter) Open(ctx context.Context, uri string) error {
 	client, err := es.NewClient(es_cfg)
 
 	if err != nil {
-		return err
+		return nil, err
 	}
 
-	wr.client = client
-	wr.index = index
+	wr := &ElasticsearchWriter{
+		client: client,
+		index:  index,
+	}
 
-	return nil
+	return wr, nil
 }
 
 func (wr *ElasticsearchWriter) Write(ctx context.Context, uri string, fh io.ReadCloser) error {

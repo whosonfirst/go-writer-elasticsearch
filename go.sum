@@ -10,3 +10,5 @@ github.com/whosonfirst/go-writer v0.0.2 h1:ZWPMCUyQS8Khvyhz34iAsEhvRFFWo5JvraQOU
 github.com/whosonfirst/go-writer v0.0.2/go.mod h1:icuZIaxlsSAb8TnAzZFYt2G4ObYeI3vBmcNRimB92sY=
 github.com/whosonfirst/go-writer v0.1.0 h1:TAb2++rpGcxlqvtCMMTuBzb3PXFQzGobpFB62WUPfQU=
 github.com/whosonfirst/go-writer v0.1.0/go.mod h1:NGPaud/M3Q6IKLDj2X0PbKKpfWRF9Zneups/BMCG0+0=
+github.com/whosonfirst/go-writer v0.2.0 h1:3RCym51cVwbhTpAZ7XKoWsXcodbEbKGDWYUpHoXyEOQ=
+github.com/whosonfirst/go-writer v0.2.0/go.mod h1:NGPaud/M3Q6IKLDj2X0PbKKpfWRF9Zneups/BMCG0+0=

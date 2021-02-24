@@ -3,8 +3,8 @@ package elasticsearch
 import (
 	"context"
 	"fmt"
-	es "github.com/elastic/go-elasticsearch"
-	esapi "github.com/elastic/go-elasticsearch/esapi"
+	es "github.com/elastic/go-elasticsearch/v7"
+	esapi "github.com/elastic/go-elasticsearch/v7/esapi"
 	wof_writer "github.com/whosonfirst/go-writer"
 	"io"
 	"net/url"
@@ -82,7 +82,7 @@ func NewElasticsearchWriter(ctx context.Context, uri string) (wof_writer.Writer,
 	return wr, nil
 }
 
-func (wr *ElasticsearchWriter) Write(ctx context.Context, uri string, fh io.ReadCloser) error {
+func (wr *ElasticsearchWriter) Write(ctx context.Context, uri string, fh io.ReadSeeker) (int64, error) {
 
 	req := esapi.IndexRequest{
 		Index:      wr.index,
@@ -94,8 +94,12 @@ func (wr *ElasticsearchWriter) Write(ctx context.Context, uri string, fh io.Read
 	_, err := req.Do(ctx, wr.client)
 
 	if err != nil {
-		return err
+		return 0, err
 	}
 
-	return nil
+	return 0, nil
+}
+
+func (wr *ElasticsearchWriter) WriterURI(ctx context.Context, uri string) string {
+	return uri
 }

@@ -4,7 +4,7 @@ Elasticsearch support for the [go-writer](https://github.com/whosonfirst/go-writ
 
 ## Important
 
-This is work in progress. Documentation to follow
+This package has been deprecated and is no longer supported. Please use the [whosonfirst/go-whosonfirst-elasticsearch/writer](https://github.com/whosonfirst/go-whosonfirst-elasticsearch/tree/main/writer) package instead.
 
 ## Elasticsearch
 
